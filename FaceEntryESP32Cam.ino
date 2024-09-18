@@ -316,7 +316,6 @@ void prepoznavanjeLica(){
           }
           if (g_state == START_RECOGNITION  && (st_face_list.count > 0))
           {
-            Serial.println("1");
             face_id_node *f = recognize_face_with_name(&st_face_list, out_res.face_id);
             if (f)
             {
@@ -325,7 +324,6 @@ void prepoznavanjeLica(){
               client.send(recognised_message);
               attempt=0;
               digitalWrite(LED_BUILTIN, LOW);
-              Serial.println("2");
               esp_camera_fb_return(fb);
               break;
             }
@@ -406,7 +404,6 @@ void reconnect() {
       delay(500);
       attempt=0;
       lock = false;
-      Serial.println("uso u else");
       client2.subscribe(mqttTopic);     
     } else {
       Serial.print("failed, reconnect=");
